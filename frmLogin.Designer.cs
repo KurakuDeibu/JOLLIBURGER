@@ -1,6 +1,6 @@
 ﻿namespace JOLLIBURGER
 {
-    partial class Form1
+    partial class frmLogin
     {
         /// <summary>
         /// Required designer variable.
@@ -39,12 +39,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -80,6 +80,7 @@
             this.btnLogin.TabIndex = 21;
             this.btnLogin.Text = "LOGIN";
             this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // btnClear
             // 
@@ -94,25 +95,26 @@
             this.btnClear.TabIndex = 26;
             this.btnClear.Text = "CLEAR";
             this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // txtBoxUser
             // 
-            this.txtBoxUser.BackColor = System.Drawing.SystemColors.Control;
-            this.txtBoxUser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBoxUser.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxUser.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txtBoxUser.BackColor = System.Drawing.Color.Moccasin;
+            this.txtBoxUser.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBoxUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxUser.ForeColor = System.Drawing.Color.DarkOrange;
             this.txtBoxUser.Location = new System.Drawing.Point(50, 123);
             this.txtBoxUser.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtBoxUser.Multiline = true;
             this.txtBoxUser.Name = "txtBoxUser";
             this.txtBoxUser.Size = new System.Drawing.Size(331, 35);
-            this.txtBoxUser.TabIndex = 17;
+            this.txtBoxUser.TabIndex = 1;
             // 
             // txtBoxPass
             // 
-            this.txtBoxPass.BackColor = System.Drawing.SystemColors.Control;
-            this.txtBoxPass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBoxPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxPass.BackColor = System.Drawing.Color.Moccasin;
+            this.txtBoxPass.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBoxPass.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxPass.ForeColor = System.Drawing.Color.DarkOrange;
             this.txtBoxPass.Location = new System.Drawing.Point(50, 201);
             this.txtBoxPass.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -120,7 +122,7 @@
             this.txtBoxPass.Name = "txtBoxPass";
             this.txtBoxPass.PasswordChar = '•';
             this.txtBoxPass.Size = new System.Drawing.Size(331, 35);
-            this.txtBoxPass.TabIndex = 18;
+            this.txtBoxPass.TabIndex = 2;
             // 
             // label7
             // 
@@ -147,6 +149,7 @@
             this.checkBox1.TabIndex = 20;
             this.checkBox1.Text = "Show Password";
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // label4
             // 
@@ -178,7 +181,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DarkOrange;
-            this.label2.Location = new System.Drawing.Point(269, 447);
+            this.label2.Location = new System.Drawing.Point(298, 447);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 21);
@@ -197,6 +200,17 @@
             this.label3.Size = new System.Drawing.Size(87, 21);
             this.label3.TabIndex = 24;
             this.label3.Text = "Username";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.DarkOrange;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(434, 53);
+            this.panel2.TabIndex = 28;
             // 
             // pictureBox1
             // 
@@ -223,36 +237,25 @@
             this.label5.TabIndex = 28;
             this.label5.Text = "JOLLIBURGER";
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.DarkOrange;
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(434, 53);
-            this.panel2.TabIndex = 28;
-            // 
-            // Form1
+            // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Orange;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(875, 578);
+            this.ClientSize = new System.Drawing.Size(506, 578);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "Form1";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LOGINFORM";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
