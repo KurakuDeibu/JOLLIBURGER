@@ -90,6 +90,12 @@
     <Compile Include="ucProducts.Designer.cs">
       <DependentUpon>ucProducts.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\frmAccounts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmAccounts.Designer.cs">
+      <DependentUpon>frmAccounts.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\frmCategory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +143,9 @@
     <EmbeddedResource Include="ucProducts.resx">
       <DependentUpon>ucProducts.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmAccounts.resx">
+      <DependentUpon>frmAccounts.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\frmCategory.resx">
       <DependentUpon>frmCategory.cs</DependentUpon>
     </EmbeddedResource>
@@ -173,6 +182,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\trash-xmark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2674077_object_gear_web_essential_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

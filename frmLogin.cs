@@ -1,13 +1,6 @@
-﻿using Microsoft.Win32;
+﻿using JOLLIBURGER.Views;
 using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace JOLLIBURGER
@@ -100,7 +93,7 @@ namespace JOLLIBURGER
                         txtBoxPass.Clear();
                         txtBoxUser.Clear();
                         this.Hide();
-                        frmMainDashboard frm = new frmMainDashboard(); // go to burger shop form -
+                        frmMenu frm = new frmMenu(); // go to burger shop form -
                         frm.ShowDialog();
                     }
                     else
@@ -116,7 +109,7 @@ namespace JOLLIBURGER
                 else
                 {
                     MessageBox.Show("Invalid username or password!", "Access Denied!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                    txtBoxUser.Focus();
                 }
             }
             catch (Exception ex)
@@ -142,6 +135,11 @@ namespace JOLLIBURGER
             {
                 txtBoxPass.PasswordChar = '•';
             }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }

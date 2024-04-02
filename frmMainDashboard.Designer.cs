@@ -29,21 +29,23 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnMainAccounts = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnMainMenu = new System.Windows.Forms.Button();
             this.btnMainProducts = new System.Windows.Forms.Button();
             this.btnMainCategory = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnClose = new System.Windows.Forms.PictureBox();
             this.lbl_username = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.main_Panel = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,9 +64,18 @@
             this.panel1.Size = new System.Drawing.Size(252, 585);
             this.panel1.TabIndex = 0;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(54, 16);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(145, 113);
+            this.pictureBox2.TabIndex = 37;
+            this.pictureBox2.TabStop = false;
+            // 
             // btnMainAccounts
             // 
             this.btnMainAccounts.BackColor = System.Drawing.Color.White;
+            this.btnMainAccounts.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMainAccounts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMainAccounts.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMainAccounts.ForeColor = System.Drawing.Color.DarkOrange;
@@ -80,6 +91,7 @@
             // btnLogout
             // 
             this.btnLogout.BackColor = System.Drawing.Color.White;
+            this.btnLogout.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.ForeColor = System.Drawing.Color.DarkOrange;
@@ -95,6 +107,7 @@
             // btnMainMenu
             // 
             this.btnMainMenu.BackColor = System.Drawing.Color.White;
+            this.btnMainMenu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMainMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMainMenu.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMainMenu.ForeColor = System.Drawing.Color.DarkOrange;
@@ -105,11 +118,12 @@
             this.btnMainMenu.TabIndex = 34;
             this.btnMainMenu.Text = "Menu";
             this.btnMainMenu.UseVisualStyleBackColor = false;
-            this.btnMainMenu.Click += new System.EventHandler(this.button3_Click);
+            this.btnMainMenu.Click += new System.EventHandler(this.btnMainMenu_Click);
             // 
             // btnMainProducts
             // 
             this.btnMainProducts.BackColor = System.Drawing.Color.White;
+            this.btnMainProducts.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMainProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMainProducts.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMainProducts.ForeColor = System.Drawing.Color.DarkOrange;
@@ -125,6 +139,8 @@
             // btnMainCategory
             // 
             this.btnMainCategory.BackColor = System.Drawing.Color.White;
+            this.btnMainCategory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnMainCategory.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMainCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMainCategory.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMainCategory.ForeColor = System.Drawing.Color.DarkOrange;
@@ -142,6 +158,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.DarkOrange;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.btnClose);
             this.panel2.Controls.Add(this.lbl_username);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -149,6 +166,18 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1162, 47);
             this.panel2.TabIndex = 30;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClose.Image = global::JOLLIBURGER.Properties.Resources.cross_small;
+            this.btnClose.Location = new System.Drawing.Point(1099, -2);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(49, 45);
+            this.btnClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnClose.TabIndex = 3;
+            this.btnClose.TabStop = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // lbl_username
             // 
@@ -189,21 +218,13 @@
             this.main_Panel.Size = new System.Drawing.Size(910, 585);
             this.main_Panel.TabIndex = 31;
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(54, 16);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(145, 113);
-            this.pictureBox2.TabIndex = 37;
-            this.pictureBox2.TabStop = false;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Image = global::JOLLIBURGER.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(1006, -17);
+            this.pictureBox1.Location = new System.Drawing.Point(976, -17);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(107, 69);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -224,10 +245,12 @@
             this.Name = "frmMainDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmMainDashboard";
+            this.Load += new System.EventHandler(this.frmMainDashboard_Load);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -248,5 +271,6 @@
         private System.Windows.Forms.Label lbl_username;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel main_Panel;
+        private System.Windows.Forms.PictureBox btnClose;
     }
 }

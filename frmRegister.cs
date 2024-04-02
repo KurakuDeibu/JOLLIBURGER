@@ -19,6 +19,7 @@ namespace JOLLIBURGER
         MySqlCommand cm = new MySqlCommand();
         MySqlDataReader dr;
         DBConnection DBcon = new DBConnection();
+        MainClass hc = new MainClass();
 
         public frmRegister()
         {
@@ -100,7 +101,7 @@ namespace JOLLIBURGER
                     dr.Close();
                     cm = new MySqlCommand("INSERT INTO tblaccounts (username, password, role, name) VALUES (@username, @password, @role, @name)", cn);
                     cm.Parameters.AddWithValue("username", txtBoxUser.Text);
-                    cm.Parameters.AddWithValue("password", txtBoxPass.Text);//hc.PassHash(txtBoxPass.Text));
+                    cm.Parameters.AddWithValue("password", hc.PassHash(txtBoxPass.Text));
                     cm.Parameters.AddWithValue("@role", cmbRole.Text);
                     cm.Parameters.AddWithValue("@name", txtName.Text);
 
@@ -122,7 +123,12 @@ namespace JOLLIBURGER
 
         private void cmbRole_SelectedIndexChanged(object sender, EventArgs e)
         {
-        
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }

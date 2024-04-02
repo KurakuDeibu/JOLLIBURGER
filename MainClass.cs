@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Data;
+using System.Drawing;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
@@ -60,7 +61,7 @@ namespace JOLLIBURGER
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.ToString());
                 cn.Close();
             }
             return res;
@@ -86,6 +87,22 @@ namespace JOLLIBURGER
                 MessageBox.Show(ex.Message, "Error");
             }
         }
+
+        //public string PassHash(string data)
+        //{
+        //    SHA256 sha = SHA256.Create();
+        //    byte[] hashdata = sha.ComputeHash(Encoding.Default.GetBytes(data));
+
+        //    StringBuilder returnVal = new StringBuilder();
+
+        //    for (int i = 0; i < hashdata.Length; i++)
+        //    {
+        //        returnVal.Append(hashdata[i].ToString());
+        //    }
+        //    return returnVal.ToString();
+
+        //}
+
 
         public string PassHash(string data)
         {
@@ -113,6 +130,26 @@ namespace JOLLIBURGER
                 row.Cells[0].Value = count;
             }
         }
+
+        //public static void BlurBkg(Form Model)
+        //{
+        //    Form bkg = new Form();
+        //    using (Model)
+        //    {
+        //        bkg.StartPosition = FormStartPosition.Manual;
+        //        bkg.FormBorderStyle = FormBorderStyle.None;
+        //        bkg.Opacity = 0.5d;
+        //        bkg.BackColor = Color.Black;
+        //        //bkg.Size = frmMainDashboard.Instance.Size;
+        //        //bkg.Location = frmMainDashboard.Instance.Location;
+        //        bkg.ShowInTaskbar = false;
+        //        bkg.Show();
+        //        Model.Owner = bkg;
+        //        Model.ShowDialog(bkg);
+        //        bkg.Dispose();
+        //    }
+
+        //}
     }
 }
 

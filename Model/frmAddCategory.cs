@@ -43,7 +43,7 @@ namespace JOLLIBURGER.Views
 
                 if (id == 0)
                 {
-                    qry = "INSERT INTO tblcategory VALUES (@, @Name)";
+                    qry = "INSERT INTO tblcategory VALUES (@id, @Name)";
                 MessageBox.Show("Saved Successfully!", "Saved!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }

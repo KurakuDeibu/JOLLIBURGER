@@ -17,22 +17,27 @@ namespace JOLLIBURGER
             InitializeComponent();
         }
 
-        //public event EventHandler onSelect = null;
+        public event EventHandler onSelect = null;
 
-        //public int id { get; set; }
-        //public string BPrice { get; set; }
-        //public string PCategory { get; set; }
+        public int id { get; set; }
+        public string pprice { get; set; }
+        public string pcategory { get; set; }
 
 
-        //public string PName
-        //{
-        //    get { return lblPName.Text; }
-        //    set { lblPName.Text = value; }
-        //}
-        //public Image PImage
-        //{
-        //    get { return txtImage.Image; }
-        //    set { txtImage.Image = value; }
-        //}
+        public string PName
+        {
+            get { return lblPName.Text; }
+            set { lblPName.Text = value; }
+        }
+        public Image PImage
+        {
+            get { return txtImage.Image; }
+            set { txtImage.Image = value; }
+        }
+
+        private void txtImage_Click(object sender, EventArgs e)
+        {
+            onSelect?.Invoke(this, e);
+        }
     }
 }

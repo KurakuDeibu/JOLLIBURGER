@@ -63,6 +63,16 @@ namespace JOLLIBURGER.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _2674077_object_gear_web_essential_icon {
+            get {
+                object obj = ResourceManager.GetObject("2674077_object_gear_web_essential_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _4470659_app_cart_mobile_ui_ux_icon {
             get {
                 object obj = ResourceManager.GetObject("4470659_app_cart_mobile_ui_ux_icon", resourceCulture);

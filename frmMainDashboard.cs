@@ -76,5 +76,29 @@ namespace JOLLIBURGER
             AddControls(new frmProduct());
 
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Exit application?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.Dispose();
+            }
+        }
+
+        private void frmMainDashboard_Load(object sender, EventArgs e)
+        {
+             
+        }
+
+        private void btnMainMenu_Click(object sender, EventArgs e)
+        {
+
+
+            frmMenu frm = new frmMenu();
+            frm.Show();
+            this.Hide();
+        }
+
+        
     }
 }

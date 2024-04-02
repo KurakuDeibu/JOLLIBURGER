@@ -1,17 +1,6 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Diagnostics.Contracts;
-using System.Drawing;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
 using MySql.Data.MySqlClient;
 
 namespace JOLLIBURGER.Views
@@ -121,7 +110,7 @@ namespace JOLLIBURGER.Views
             else if (dataGridView1.CurrentCell.OwningColumn.Name == "colDelete")
                 
             {
-                if(MessageBox.Show("Are you sure to delete this category? ", "Deleted Category?", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes) {
+                if(MessageBox.Show("Are you sure to delete this category? ", "Delete Category?", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes) {
                 
                     int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["dvgid"].Value);
                     string qry = "DELETE FROM tblcategory WHERE categoryid =" + id + "";

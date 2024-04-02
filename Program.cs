@@ -16,7 +16,7 @@ namespace JOLLIBURGER
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMainDashboard());
+            Application.Run(new frmLogin());
         }
     }
 }
