@@ -1,7 +1,9 @@
 ﻿using JOLLIBURGER.Views;
 using MySql.Data.MySqlClient;
 using System;
+using System.Data;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace JOLLIBURGER
 {
@@ -19,6 +21,11 @@ namespace JOLLIBURGER
             cn = new MySqlConnection(DBcon.MyConnection());
             txtBoxUser.Multiline = false;
             txtBoxPass.Multiline = false;
+        }
+
+        public class shubh
+        {
+            public string shubham;
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -40,32 +47,39 @@ namespace JOLLIBURGER
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string _username = "", _role = "", _name = "";
+            //string _username = "", _role = "", _name = "";
 
             if (txtBoxPass.Text == string.Empty || txtBoxUser.Text == string.Empty)
             {
                 MessageBox.Show("Please enter all fields!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+            else
+            {
+                AuthAccount();
+            }
+        }
+
+        public void AuthAccount()
+        {
+            string _username = "", _role = "", _name = DBcon.str_user;
 
             try
             {
-
-
                 bool found = false;
                 cn.Open();
                 cm = new MySqlCommand("SELECT * FROM tblaccounts WHERE username = @username and password =@password", cn);
                 cm.Parameters.AddWithValue("@username", txtBoxUser.Text);
-                cm.Parameters.AddWithValue("@password", hc.PassHash(txtBoxPass.Text));
+                cm.Parameters.AddWithValue("@password", hc.PassHash(txtBoxPass.Text)); //Password Decrypting
                 dr = cm.ExecuteReader();
                 dr.Read();
 
                 if (dr.HasRows)
                 {
                     found = true;
+                     _name = dr["name"].ToString();// to show name on welcome/dashboard
                     _username = dr["username"].ToString();
                     _role = dr["role"].ToString();
-                    _name = dr["name"].ToString(); // to show name on welcome/dashboard
 
                 }
                 else
@@ -83,18 +97,26 @@ namespace JOLLIBURGER
                         MessageBox.Show("Welcome " + _name + "!", "Redirecting to Admin Dashboard...", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txtBoxPass.Clear();
                         txtBoxUser.Clear();
-                        this.Hide();
                         frmMainDashboard frm = new frmMainDashboard();
-                        frm.ShowDialog();
+                        
+                        frm.lbl_username.Text += _name;
+                        frm.lbl_role.Text = _role;
+
+                        this.Hide();
+                        frm.Show();
+
                     }
                     else if (_role == "Cashier")
                     {
                         MessageBox.Show("Welcome " + _name + "!", "Redirecting to Cashier Menu...", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txtBoxPass.Clear();
                         txtBoxUser.Clear();
-                        this.Hide();
+                        this.Hide();    
                         frmMenu frm = new frmMenu(); // go to burger shop form -
+                        frm.lbl_username.Text = _name;
+                       // frm.btn_ManageProducts.Enabled = false;
                         frm.ShowDialog();
+
                     }
                     else
                     {

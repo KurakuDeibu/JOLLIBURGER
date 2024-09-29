@@ -12,7 +12,7 @@ namespace JOLLIBURGER
     internal class MainClass
     {
         // static readonly string con_string = "server=localhost;user id=root; password=;database=jollidb";
-        public static readonly string con_string = "server=localhost;user id=root;password=;database=jollidb";
+        public static readonly string con_string = "server=localhost;user id=root;password=;database=jolliburger_db";
         public static MySqlConnection cn = new MySqlConnection(con_string);
 
         //for loading data from db
@@ -88,22 +88,7 @@ namespace JOLLIBURGER
             }
         }
 
-        //public string PassHash(string data)
-        //{
-        //    SHA256 sha = SHA256.Create();
-        //    byte[] hashdata = sha.ComputeHash(Encoding.Default.GetBytes(data));
-
-        //    StringBuilder returnVal = new StringBuilder();
-
-        //    for (int i = 0; i < hashdata.Length; i++)
-        //    {
-        //        returnVal.Append(hashdata[i].ToString());
-        //    }
-        //    return returnVal.ToString();
-
-        //}
-
-
+        //Password Encryption 
         public string PassHash(string data)
         {
             SHA256 sha = SHA256.Create();
@@ -113,7 +98,7 @@ namespace JOLLIBURGER
 
             for (int i = 0; i < hashdata.Length; i++)
             {
-                returnVal.Append(hashdata[i].ToString());
+                returnVal.Append(hashdata[i].ToString("x2"));
             }
             return returnVal.ToString();
 

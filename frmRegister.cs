@@ -101,7 +101,7 @@ namespace JOLLIBURGER
                     dr.Close();
                     cm = new MySqlCommand("INSERT INTO tblaccounts (username, password, role, name) VALUES (@username, @password, @role, @name)", cn);
                     cm.Parameters.AddWithValue("username", txtBoxUser.Text);
-                    cm.Parameters.AddWithValue("password", hc.PassHash(txtBoxPass.Text));
+                    cm.Parameters.AddWithValue("password", hc.PassHash(txtBoxPass.Text)); // Password Encryption
                     cm.Parameters.AddWithValue("@role", cmbRole.Text);
                     cm.Parameters.AddWithValue("@name", txtName.Text);
 

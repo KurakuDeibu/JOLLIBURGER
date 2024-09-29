@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using JOLLIBURGER.Model;
 using MySql.Data.MySqlClient;
 
 namespace JOLLIBURGER.Views
@@ -17,15 +18,13 @@ namespace JOLLIBURGER.Views
     {
         MySqlConnection cn = new MySqlConnection();
         MySqlCommand cm = new MySqlCommand();
-        //MySqlDataReader dr;
-        //frmCategory f1;
+        DBConnection DBcon = new DBConnection();
 
         public frmAddCategory()
-       // public frmAddCategory(frmCategory frm1)
         {
             InitializeComponent();
-          // cn = new MySqlConnection(DBcon.MyConnection());
-         //   f1 = frm1;
+            cn = new MySqlConnection(DBcon.MyConnection());
+
 
         }
 
@@ -33,64 +32,35 @@ namespace JOLLIBURGER.Views
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if(txtCategory.Text == string.Empty)
+            try
             {
-                MessageBox.Show("Required missing fields!","Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            
-            string qry = "";
-
-                if (id == 0)
+                if (txtCategory == null)
                 {
-                    qry = "INSERT INTO tblcategory VALUES (@id, @Name)";
-                MessageBox.Show("Saved Successfully!", "Saved!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                    MessageBox.Show("Category should not be empty!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                else
-                {
-                    qry = "UPDATE tblcategory SET categoryname = @Name WHERE categoryid = @id";
-                MessageBox.Show("Changes Updated!", "Updated!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            }
-            Hashtable ht = new Hashtable();
-                ht.Add("@id", id);
-                ht.Add("@Name", txtCategory.Text);
-
-                if (MainClass.SQL(qry, ht) > 0)
+                if (MessageBox.Show("Save this category?", "Save Category", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    id = 0;
-                    //txtCategory.Focus();
-                    this.Dispose();
+                    cn.Open();
+                    cm = new MySqlCommand("insert into tblcategory (categoryname) values (@category)", cn);
+                    cm.Parameters.AddWithValue("@category", txtCategory.Text);
+                    cm.ExecuteNonQuery();
+                    cn.Close();
+                    MessageBox.Show("Category has been successfully saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                  
+                    this.Close();
                 }
             }
+            catch (Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }
+
+            frmAddProduct f1 = new frmAddProduct();
+            f1.LoadCategory();
+        }
            
-        
-        //try
-        //{
-        //    if ((txtCategory.Text == string.Empty))
-        //    {
-        //        MessageBox.Show("Warning: Required missing fields!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //        return;
-        //    }
-
-        //    cn.Open();
-        //    cm = new MySqlCommand("INSERT INTO tblcategory(categoryname) VALUES (@categoryname)", cn);
-        //    cm.Parameters.AddWithValue("@categoryname", txtCategory.Text);
-        //    cm.ExecuteNonQuery();
-        //    cn.Close();
-        //    MessageBox.Show("Category has been successfully saved!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    Clear();
-        //    f1.LoadCategory();
-        //    this.Dispose();
-
-        //}
-        //catch (Exception ex)
-        //{
-        //    cn.Close();
-        //    MessageBox.Show("Warning: " + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-        //}
 
 
         private void btnUpdate_Click(object sender, EventArgs e)

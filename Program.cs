@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JOLLIBURGER.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace JOLLIBURGER
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmLogin());
+            
         }
     }
 }

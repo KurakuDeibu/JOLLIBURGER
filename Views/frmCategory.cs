@@ -49,7 +49,7 @@ namespace JOLLIBURGER.Views
 
         private void frmCategory_Load(object sender, EventArgs e)
         {
-            GetData();
+           GetData();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -98,29 +98,37 @@ namespace JOLLIBURGER.Views
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView1.CurrentCell.OwningColumn.Name == "colEdit")
+            try
             {
-                frmAddCategory frm = new frmAddCategory();
-                frm.id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["dvgid"].Value);
-                frm.txtCategory.Text = Convert.ToString(dataGridView1.CurrentRow.Cells["dvgcategory"].Value);
-                frm.ShowDialog();
-                GetData();
-            }
-
-            else if (dataGridView1.CurrentCell.OwningColumn.Name == "colDelete")
-                
-            {
-                if(MessageBox.Show("Are you sure to delete this category? ", "Delete Category?", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes) {
-                
-                    int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["dvgid"].Value);
-                    string qry = "DELETE FROM tblcategory WHERE categoryid =" + id + "";
-                    Hashtable ht = new Hashtable();
-                    MainClass.SQL(qry, ht);
-                    MessageBox.Show("Category deleted! ", "Category Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (dataGridView1.CurrentCell.OwningColumn.Name == "colEdit")
+                {
+                    frmAddCategory frm = new frmAddCategory();
+                    frm.id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["dvgid"].Value);
+                    frm.txtCategory.Text = Convert.ToString(dataGridView1.CurrentRow.Cells["dvgcategory"].Value);
+                    frm.ShowDialog();
                     GetData();
-
                 }
+
+                else if (dataGridView1.CurrentCell.OwningColumn.Name == "colDelete")
+
+                {
+                    if (MessageBox.Show("Are you sure to delete this category? ", "Delete Category?", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                    {
+
+                        int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["dvgid"].Value);
+                        string qry = "DELETE FROM tblcategory WHERE categoryid =" + id + "";
+                        Hashtable ht = new Hashtable();
+                        MainClass.SQL(qry, ht);
+                        MessageBox.Show("Category deleted! ", "Category Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        GetData();
+
+                    }
+                }
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
+
         }
     }
     }

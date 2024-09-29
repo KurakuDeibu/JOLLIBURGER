@@ -109,6 +109,7 @@
             this.txtBoxUser.Name = "txtBoxUser";
             this.txtBoxUser.Size = new System.Drawing.Size(331, 35);
             this.txtBoxUser.TabIndex = 1;
+            this.txtBoxUser.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtBoxPass
             // 
@@ -123,6 +124,7 @@
             this.txtBoxPass.PasswordChar = '•';
             this.txtBoxPass.Size = new System.Drawing.Size(331, 35);
             this.txtBoxPass.TabIndex = 2;
+            this.txtBoxPass.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label7
             // 
@@ -270,15 +272,15 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.TextBox txtBoxUser;
         private System.Windows.Forms.TextBox txtBoxPass;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel2;
+        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.Label label7;
     }
 }
 
